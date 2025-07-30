@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { io } from "socket.io-client";
-import JoinPage from "./pages/JoinPage";
-import ChatPage from "./pages/ChatPage";
+import JoinPage from "./Pages/JoinPage";
+import ChatPage from "./Pages/ChatPage"
 
 function App() {
     const socketRef = useRef();
@@ -10,8 +10,7 @@ function App() {
     const [joined, setJoined] = useState(false);
 
     useEffect(() => {
-        socketRef.current = io("http://localhost:3000");
-
+      socketRef.current = io(import.meta.env.VITE_BACKEND_URL);
         return () => {
             socketRef.current.disconnect();
         };
